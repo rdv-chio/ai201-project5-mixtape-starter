@@ -121,3 +121,17 @@ To see how these layers cooperate, let's trace the exact data flow of a user add
 * **Codebase Orientation**: AI was used to parse the initial structure of the `services/` layer. By pasting the contents of complex junction queries, it helped map out how many-to-many relationships like `playlist_entries` and `song_tags` were handled by the underlying database engine.
 * **Debugging Assistance**: AI was utilized to trace the specific behaviors of native Python time libraries. Specifically, it provided immediate clarity on how `datetime.weekday()` interfaces with calendar transitions.
 * **Verification and Override**: While AI correctly hypothesized that `today.weekday() != 6` was a boundary failure, its initial structural suggestion was to replace it with complex ISO calendar lookups. This suggestion was overridden in favor of a cleaner, more readable solution: removing the fragile weekday checking wrapper entirely since the consecutive calculation was already fully handled by verifying `days_since_last == 1`.
+
+```text
+(ai201) rociodv@WIN-MU9C0LJD9CM:~/code/ai201-project5-mixtape-starter$ git log --oneline
+9d93179 (HEAD -> bugfix/mixtape) Milestone 4: Final Review and AI Usage
+531f6e3 (origin/bugfix/mixtape) fix: remove off-by-one array slice to prevent dropping last playlist song
+542e80d fix: dispatch notification to song owner on new rating events
+2eb6103 fix: enforce distinct rows in song search query to avoid duplicates
+e4e4d67 fix: adjust rolling recency window for listening now feed
+964e40b fix: correct Sunday boundary condition in streak reset logic
+e306d0a (origin/main, origin/HEAD, main) Milestone 1: Fork, Set Up, and Orient Yourself
+2dfdeaa Add .gitignore file and update README with setup instructions
+7b64551 initial commit
+(ai201) rociodv@WIN-MU9C0LJD9CM:~/code/ai201-project5-mixtape-starter$
+```
