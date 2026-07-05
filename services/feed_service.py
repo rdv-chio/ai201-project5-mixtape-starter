@@ -9,8 +9,8 @@ from sqlalchemy import desc
 from app import db
 from models import User, Song, ListeningEvent
 
-
-RECENT_THRESHOLD = timedelta(hours=24)
+# Define a threshold for what counts as "recent" listening activity. The "Listening Now" feature accurately updates with active sessions from the past hour instead of trailing into yesterday.
+RECENT_THRESHOLD = timedelta(hours=1)
 
 
 def get_friends_listening_now(user_id: str) -> list[dict]:
