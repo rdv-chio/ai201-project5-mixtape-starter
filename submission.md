@@ -1,5 +1,11 @@
 # Mixtape Bug Hunt 
 
+## AI Usage Section
+
+* **Codebase Orientation**: AI was used to parse the initial structure of the `services/` layer. By pasting the contents of complex junction queries, it helped map out how many-to-many relationships like `playlist_entries` and `song_tags` were handled by the underlying database engine.
+* **Debugging Assistance**: AI was utilized to trace the specific behaviors of native Python time libraries. Specifically, it provided immediate clarity on how `datetime.weekday()` interfaces with calendar transitions.
+* **Verification and Override**: While AI correctly hypothesized that `today.weekday() != 6` was a boundary failure, its initial structural suggestion was to replace it with complex ISO calendar lookups. This suggestion was overridden in favor of a cleaner, more readable solution: removing the fragile weekday checking wrapper entirely since the consecutive calculation was already fully handled by verifying `days_since_last == 1`.
+
 ## Codebase Map
 
 ### Architectural Design & System Patterns
